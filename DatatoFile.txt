@@ -1,0 +1,112 @@
+::[Bat To Exe Converter]
+::
+::YAwzoRdxOk+EWAjk
+::fBw5plQjdCyDJGyX8VAjFB9RWguMcm+vC7QP1Mz0+OSLrUwZR940fZbS1LKBMu0S/kzre6l8hysM1sIPA3s=
+::YAwzuBVtJxjWCl3EqQJgSA==
+::ZR4luwNxJguZRRnk
+::Yhs/ulQjdF+5
+::cxAkpRVqdFKZSDk=
+::cBs/ulQjdF+5
+::ZR41oxFsdFKZSDk=
+::eBoioBt6dFKZSDk=
+::cRo6pxp7LAbNWATEpCI=
+::egkzugNsPRvcWATEpCI=
+::dAsiuh18IRvcCxnZtBJQ
+::cRYluBh/LU+EWAnk
+::YxY4rhs+aU+IeA==
+::cxY6rQJ7JhzQF1fEqQJgZksaHErTXA==
+::ZQ05rAF9IBncCkqN+0xwdVsEAlTMbCXrZg==
+::ZQ05rAF9IAHYFVzEqQIULQ0ZeRCLMGKuH9U=
+::eg0/rx1wNQPfEVWB+kM9LVsJDCCHKiaPErwQ4fzijw==
+::fBEirQZwNQPfEVWB+kM9LVsJDCCHKiaPErwQ4fzijw==
+::cRolqwZ3JBvQF1fEqQIAC1tdQgKNMWquD7oSqIg=
+::dhA7uBVwLU+EWGCL4WY1Pls0
+::YQ03rBFzNR3SWATEzU0lDB5CDFbSbjja
+::dhAmsQZ3MwfNWATElA==
+::ZQ0/vhVqMQ3MEVWAtB9wSA==
+::Zg8zqx1/OA3MEVWAtB9wSA==
+::dhA7pRFwIByZRRnk
+::Zh4grVQjdCyDJGyX8VAjFB9RWguMcm+vC7QP1Mz+/OGTrV0hcK8MYZyW76CHLK4W8kCE
+::YB416Ek+ZG8=
+::
+::
+::978f952a14a936cc963da21a135fa983
+@echo off
+
+:: Get and display the OS Name
+echo :
+systeminfo | find "OS Name"
+:
+:: Get and display the OS Version
+echo :
+systeminfo | find "OS Version"
+:
+
+:: Get and display the Host Name
+echo :
+systeminfo | find "Host Name"
+:
+
+:: Get and display the Domain
+echo :
+systeminfo | find "Domain"
+:
+
+:: Get and display the Original Install Date
+echo :
+systeminfo | find "Original Install Date"
+
+:: Get and display the System Type
+echo :
+systeminfo | find "System Type"
+
+
+
+:: Get and display the System Manufacturer
+echo :
+systeminfo | find "System Manufacturer"
+:
+
+
+:: Get and display the System Model
+echo :
+systeminfo | find "System Model"
+:
+
+
+
+
+:: Get and display the Service Tag (serial number)
+echo :
+wmic bios get serialnumber
+
+:: Get and display the Software Key (Product Key)
+echo :
+wmic path softwarelicensingservice get OA3xOriginalProductKey
+
+
+
+
+
+echo :
+ipconfig | findstr /C:"Ethernet adapter" /C:"IPv4 Address" /C:"Subnet Mask" /C:"Default Gateway"
+
+echo :
+wmic nicconfig get Caption,MACAddress
+:
+
+echo  Wireless Profile Information :
+echo --------------------------------------------------------------
+
+netsh wlan show profiles
+
+echo: Open Windows CLI and run :
+
+echo  'netsh wlan show profile name="SSID_Name" key=clear'
+
+echo  replace "SSID_Name" with one listed above to view its Password.
+
+:loop
+rem The batch file will stay open in this loop
+timeout /t 1 /nobreak >nul
+goto loop
